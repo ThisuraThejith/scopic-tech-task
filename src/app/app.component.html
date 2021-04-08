@@ -1,0 +1,64 @@
+<div class="container">
+    <h1>Scopic Checkboxes Task</h1>
+    <div class="form-group">
+      <label>Paste your data structure here :</label>
+      <textarea class="form-control" #dataStructureTextarea (change)="process(dataStructureTextarea.value)" rows="10"></textarea>
+    </div>
+    <div class="text-left mt-5">
+      <div class="row">
+        <div class="col-md-4">
+          <ul class="list-group">
+            <!-- Parent Item -->
+            <li class="list-group-item" *ngFor="let item of data.ParentChildchecklist">
+              <!-- Parent Checkbox -->
+              <input type="checkbox" [(ngModel)]="item.isSelected" name="list_name" value="{{item.name}}"
+                     (ngModelChange)="parentCheck(item)"/>
+              {{item.name}}
+              <!-- Parent Arrow -->
+              <span (click)="expandCollapse(item)">
+                <i class="fas fa-angle-up" *ngIf="item.isClosed;else isCollapsed"></i>
+                <ng-template #isCollapsed>
+                  <i class="fas fa-angle-down"></i>
+                </ng-template>
+              </span>
+              <div class="child-list" [hidden]="item.isClosed">
+                <ul class="list-group level-two">
+                  <!-- Child Item -->
+                  <li class="list-group-item level-two" *ngFor="let itemChild of
+                item.children">
+                    <!-- Child Checkbox -->
+                    <input type="checkbox" [(ngModel)]="itemChild.isSelected" name="list_name_child"
+                           value="{{itemChild.name}}" (ngModelChange)="childCheck(item,item.children);parentCheck(itemChild);"/>
+                    {{itemChild.name}}
+                    <span (click)="expandCollapse(itemChild)">
+                      <i class="fas fa-angle-up" *ngIf="itemChild.isClosed;else isCollapsed"></i>
+                      <ng-template #isCollapsed>
+                        <i class="fas fa-angle-down"></i>
+                      </ng-template>
+                    </span>
+                    <div class="child-child-list" [hidden]="itemChild.isClosed">
+                      <ul class="list-group level-three">
+                        <!-- Child Item -->
+                        <li class="list-group-item level-three" *ngFor="let itemGrandChild of itemChild.children">
+                          <!-- Child Checkbox -->
+                          <input type="checkbox" [(ngModel)]="itemGrandChild.isSelected" name="list_name_child_child"
+                                 value="{{itemGrandChild.name}}" (ngModelChange)="childCheck(itemChild,itemChild.children);childCheck(item,item.children);"/>
+                          {{itemGrandChild.name}}
+                        </li>
+                      </ul>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </li>
+          </ul>
+        </div>
+        <div class="col-md-8">
+          <div class="form-group">
+            <label>Checked checkboxes :</label>
+            <textarea class="form-control" #checkedInfoTextArea rows="10">{{stringify(data)}}</textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
