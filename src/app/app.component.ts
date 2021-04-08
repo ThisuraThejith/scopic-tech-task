@@ -57,17 +57,26 @@ export class AppComponent {
     let selected = [];
     for (let arr of array) {
       if (arr.children) {
-        let arrChild = this.recurseArray(arr.children);
-        if (arr.children.length != arrChild.length) {
-          selected = selected.concat(arrChild);
+        let childrenNames = [];
+        for (let i=0; i<arr.children.length; i++) {
+          childrenNames.push(arr.children[i].name);
         }
-        if(arr.isSelected) {
-          selected.push(arr.name);
+        let returnChild = this.recurseArray(arr.children);
+        let count =0;
+
+        for (let j=0; j<childrenNames.length; j++) {
+          for (let k=0; k<returnChild.length; k++) {
+            if (childrenNames[j] == returnChild[k]) {
+              count++;
+            }
+          }
         }
-      } else {
-        if(arr.isSelected) {
-          selected.push(arr.name);
+        if (count != childrenNames.length) {
+          selected = selected.concat(returnChild);
         }
+      } 
+      if(arr.isSelected) {
+        selected.push(arr.name);
       }
     }
     return selected;

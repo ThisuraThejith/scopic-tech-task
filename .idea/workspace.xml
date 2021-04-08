@@ -23,6 +23,7 @@
   <component name="ProjectId" id="1qrp2vCsFI3FOlhHzdvvOo2rYMW" />
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="com.intellij.ide.scratch.LRUPopupBuilder$1/New Scratch File" value="JSON" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
@@ -74,7 +75,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1617847359796</updated>
-      <workItem from="1617847361119" duration="11038000" />
+      <workItem from="1617847361119" duration="14512000" />
     </task>
     <servers />
   </component>
