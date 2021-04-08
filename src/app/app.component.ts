@@ -47,7 +47,6 @@ export class AppComponent {
 
   //Just to show updated JSON object on view
   stringify(obj) {
-    console.log(obj);
     return JSON.stringify(obj);
   }
 }
