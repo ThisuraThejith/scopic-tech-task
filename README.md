@@ -4,7 +4,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 
 ## Install dependencies
 
-Run `npm install` to install the dependencies of the project. The get the system served referring to the following section.
+Run `npm install` to install the dependencies of the project. Then get the system served referring to the following section.
 
 ## Development server
 
