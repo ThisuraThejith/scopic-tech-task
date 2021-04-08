@@ -74,7 +74,7 @@ export class AppComponent {
         if (count != childrenNames.length) {
           selected = selected.concat(returnChild);
         }
-      } 
+      }
       if(arr.isSelected) {
         selected.push(arr.name);
       }
