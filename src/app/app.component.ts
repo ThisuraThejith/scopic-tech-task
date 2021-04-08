@@ -12,6 +12,7 @@ export class AppComponent {
 
   constructor() {
     this.data = {};
+    this.data.selectedCheckboxes = [];
   }
 
   process(val) {
@@ -27,6 +28,7 @@ export class AppComponent {
         }
       }
     }
+    this.data.selectedCheckboxes = this.recurseArray(this.data.ParentChildchecklist);
   }
 
   //Click event on child checkbox
@@ -38,6 +40,7 @@ export class AppComponent {
       }
     }
     parentObj.isSelected = oneChildSelected;
+    this.data.selectedCheckboxes = this.recurseArray(this.data.ParentChildchecklist);
   }
 
   //Expand/Collapse event on each parent
@@ -48,5 +51,25 @@ export class AppComponent {
   //Just to show updated JSON object on view
   stringify(obj) {
     return JSON.stringify(obj);
+  }
+
+  recurseArray(array) {
+    let selected = [];
+    for (let arr of array) {
+      if (arr.children) {
+        let arrChild = this.recurseArray(arr.children);
+        if (arr.children.length != arrChild.length) {
+          selected = selected.concat(arrChild);
+        }
+        if(arr.isSelected) {
+          selected.push(arr.name);
+        }
+      } else {
+        if(arr.isSelected) {
+          selected.push(arr.name);
+        }
+      }
+    }
+    return selected;
   }
 }
