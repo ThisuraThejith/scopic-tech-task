@@ -12,8 +12,6 @@ export class AppComponent {
 
   constructor() {
     this.data = {};
-    this.data.isAllSelected = false;
-    this.data.isAllCollapsed = false;
   }
 
   process(val) {
