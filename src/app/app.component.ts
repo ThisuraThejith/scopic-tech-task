@@ -23,7 +23,6 @@ export class AppComponent {
   parentCheck(parentObj) {
     for (var i = 0; i < parentObj.children.length; i++) {
       parentObj.children[i].isSelected = parentObj.isSelected;
-      debugger;
       if (typeof parentObj.children[i].children === 'object' && parentObj.children[i].name) {
         this.parentCheck(parentObj.children[i]);
       }
@@ -48,6 +47,7 @@ export class AppComponent {
 
   //Just to show updated JSON object on view
   stringify(obj) {
+    console.log(obj);
     return JSON.stringify(obj);
   }
 }
