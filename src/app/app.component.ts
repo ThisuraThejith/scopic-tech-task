@@ -21,10 +21,12 @@ export class AppComponent {
   }
 
   parentCheck(parentObj) {
-    for (var i = 0; i < parentObj.children.length; i++) {
-      parentObj.children[i].isSelected = parentObj.isSelected;
-      if (typeof parentObj.children[i].children === 'object' && parentObj.children[i].name) {
-        this.parentCheck(parentObj.children[i]);
+    if (typeof parentObj.children === 'object' && parentObj.name) {
+      for (var i = 0; i < parentObj.children.length; i++) {
+        parentObj.children[i].isSelected = parentObj.isSelected;
+        if (typeof parentObj.children[i].children === 'object' && parentObj.children[i].name) {
+          this.parentCheck(parentObj.children[i]);
+        }
       }
     }
   }
